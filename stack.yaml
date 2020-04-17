@@ -1,27 +1,28 @@
+---
 flags: {}
 nix:
   shell-file: shell.nix
 packages:
-- yi-core
-- yi-dynamic-configuration
-- yi-frontend-vty
-# - yi-frontend-pango
-- yi-fuzzy-open
-- yi-keymap-cua
-- yi-keymap-emacs
-- yi-keymap-vim
-- yi-mode-haskell
-- yi-mode-javascript
-- yi-misc-modes
-- yi-intero
-- yi-ireader
-- yi-language
-- yi-snippet
-- yi
+  - yi-core
+  - yi-dynamic-configuration
+  - yi-frontend-vty
+  # - yi-frontend-pango
+  - yi-fuzzy-open
+  - yi-keymap-cua
+  - yi-keymap-emacs
+  - yi-keymap-vim
+  - yi-mode-haskell
+  - yi-mode-javascript
+  - yi-misc-modes
+  - yi-intero
+  - yi-ireader
+  - yi-language
+  - yi-snippet
+  - yi
 resolver: lts-11.12
 build:
- library-profiling: false
- executable-profiling: false
+  library-profiling: false
+  executable-profiling: false
 
 # needed for macOS
 # flags:
