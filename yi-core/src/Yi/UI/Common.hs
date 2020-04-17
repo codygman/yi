@@ -65,3 +65,36 @@ dummyUI = UI
   , layout           = return
   , reloadProject    = const (return ())
   }
+
+-- roughly know how to make an action
+-- > :t runReaderT . runYiM . runAction . YiA . withCurrentBuffer $ downScreenB
+-- runReaderT . runYiM . runAction . YiA . withCurrentBuffer $ downScreenB :: Yi -> IO ()
+
+-- now need to create
+-- data Yi = Yi { yiUi          :: UI Editor
+--              , yiInput       :: [Event] -> IO ()    -- ^ input stream
+--              , yiOutput      :: IsRefreshNeeded -> [Action] -> IO ()   -- ^ output stream
+--              , yiConfig      :: Config
+--              , yiVar         :: MVar YiVar           -- ^ The only mutable state in the program
+--              }
+
+-- yiUI: Can use dummyUI
+-- note dummyUI is only in scope depending on what you import
+
+-- :t Yi dummyUI (const $ pure ()) (\_ _ -> pure ())
+
+-- TODO build up a Config so I can resume creating
+-- *Yi.Core Yi.UI.Common> :t Yi dummyUI (const $ pure ()) (\_ _ -> pure ())  _config _mvarOfYiVar
+-- • Found hole: _config :: Config
+-- • Found hole: _mvarOfYiVar :: GHC.MVar.MVar YiVar
+
+-- Here are the holes left in creating Config
+-- *Yi.Core Yi.UI.Common> :t (Config _startFrontEnd _configUI [] [] _defaultKm _configInputPreprocess [] False _configRegionStyle False False _bufferUpdateHandler [] _configVars)
+-- Config (this is a big one)
+-- • Found hole: _startFrontEnd :: UIBoot
+-- • Found hole: _configUI :: UIConfig
+-- • Found hole: _defaultKm :: KeymapSet
+-- • Found hole: _configInputPreprocess :: P Event Event
+-- • Found hole: _configRegionStyle :: RegionStyle
+-- • Found hole: _bufferUpdateHandler :: Data.Sequence.Seq (Data.Sequence.Seq Update -> BufferM ())
+-- • Found hole: _configVars :: Data.DynamicState.DynamicState
