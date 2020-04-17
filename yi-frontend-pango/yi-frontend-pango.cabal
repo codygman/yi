@@ -24,12 +24,14 @@ library
       base >= 4.8 && < 5
     , containers
     , filepath
-    , glib  >= 0.13 && < 0.14
+    , glib  == 0.13.6.0
+    , gio == 0.13.5.0
+    -- gtk nix version: 0.14.10
     , gtk >= 0.13 && < 0.15
     , microlens-platform
     , mtl
     , oo-prototypes
-    , pango >= 0.13 && < 0.14
+    , pango >= 0.13 && <= 0.13.5
     , pointedlist
     , text
     , transformers-base
